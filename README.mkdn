@@ -1,0 +1,36 @@
+OTA by JoeDV and flappjaxxx
+===========
+
+Getting Started
+---------------
+
+Sign up an OTA2 account at http://jdvhosting.com/OTA2
+
+Open .repo/local_manifest.xml with your favorite text editor
+
+In local_manifest.xml add these lines:
+
+    <remote  name="fj"
+           fetch="https://github.com/flappjaxxx" />
+    
+    <project name="OTA" path="packages/apps/OTA" remote="fj" revision="master" />
+
+
+Add this line to your vendor/your rom-cm or whatever it is/config/common.mk:
+
+    # FJ-OTA
+    PRODUCT_PACKAGES += \
+    FJ-OTA
+
+Now this will compile inline
+
+To compile it seperately either compile it straight with eclipse or after lunching your ROM:
+
+    make -j4 FJ-OTA
+
+Notes:
+
+    1. Add this line to your build.prop ro.ota2.url=[Everything after ROMID= in your OTA admin]
+    2. If you wish to hide from app drawer remove or comment out the following line in AndroidManifest.xml
+    <category android:name="android.intent.category.LAUNCHER" />
+
